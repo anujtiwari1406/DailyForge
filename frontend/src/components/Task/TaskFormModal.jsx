@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
+import { useToast } from "../../context/ToastContext.jsx";
 
 const priorities = ["Low", "Medium", "High"];
 
@@ -9,6 +10,7 @@ export default function TaskFormModal({ task, onClose, onSubmit }) {
   const [tags, setTags] = useState("");
   const [priority, setPriority] = useState("Low");
   const [dueDate, setDueDate] = useState("");
+  const showToast = useToast();
 
   useEffect(() => {
     if (task) {
@@ -24,10 +26,9 @@ export default function TaskFormModal({ task, onClose, onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title.trim()) return alert("Title is required");
-    if (!priority) return alert("Priority is required");
-    if (!dueDate) return alert("Due date is required");
-
+    if (!title.trim()) { showToast("Title is required", "error"); return; }
+    if (!priority) { showToast("Priority is required", "error"); return; }
+    if (!dueDate) { showToast("Due date is required", "error"); return; }
     onSubmit({
       title: title.trim(),
       description: description.trim(),
