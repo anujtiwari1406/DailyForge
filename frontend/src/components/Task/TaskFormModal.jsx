@@ -34,24 +34,24 @@ export default function TaskFormModal({ task, onClose, onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-<<<<<<< HEAD
     if (!title.trim()) { showToast("Title is required", "error"); return; }
     if (!priority) { showToast("Priority is required", "error"); return; }
     if (!dueDate) { showToast("Due date is required", "error"); return; }
-=======
-    if (!title.trim()) return alert("Title is required");
-    if (!priority) return alert("Priority is required");
-    if (!dueDate) return alert("Due date is required");
+
+    const todayStr = new Date().toISOString().split("T")[0];
+    const maxDate = new Date();
+    maxDate.setFullYear(maxDate.getFullYear() + 1);
+    const maxDateStr = maxDate.toISOString().split("T")[0];
 
     if (dueDate < todayStr) {
-      return alert("Due date cannot be in the past");
+      showToast("Due date cannot be in the past", "error");
+      return;
     }
     
     if (dueDate > maxDateStr) {
-      return alert("Due date cannot be more than 1 year in the future");
+      showToast("Due date cannot be more than 1 year in the future", "error");
+      return;
     }
-
->>>>>>> main
     onSubmit({
       title: title.trim(),
       description: description.trim(),
