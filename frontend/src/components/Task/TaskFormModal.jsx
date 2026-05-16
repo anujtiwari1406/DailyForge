@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { useToast } from "../../context/ToastContext.jsx";
+import { CATEGORIES } from "../../utils/categoryUtils";
 
 const priorities = ["Low", "Medium", "High"];
 
