@@ -12,7 +12,12 @@ const app = express();
 // 2. Allow both 5173 and 5174 for local development
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],
+    origin: [
+      "https://dailyforge-frontend-lhjq.onrender.com",
+      "http://localhost:5173",
+      "http://localhost:5174",
+      process.env.CLIENT_ORIGIN
+    ].filter(Boolean),
     credentials: true,
   })
 );
