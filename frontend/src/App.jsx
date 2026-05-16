@@ -8,7 +8,7 @@ import ProtectedRoutes from "./components/ProtectedRoutes.jsx";
 import Tasks from "./pages/Tasks.jsx";
 import RoutineBuilder from "./pages/RoutineBuilder.jsx";
 import { ToastProvider } from "./context/ToastContext.jsx";
-
+import About from "./pages/About.jsx";
 
 const App = () => {
   return (
